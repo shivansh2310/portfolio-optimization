@@ -1,5 +1,46 @@
 # Regime-Aware Robust Portfolio Optimization
 
+## Current Implementation Status
+
+This repository now contains a working first milestone of the research system:
+
+* Yahoo Finance data loading with optional local CSV cache
+* price cleaning and return feature generation
+* volatility-regime baseline with optional Markov regime switching model
+* Ledoit-Wolf, OAS, and CREM covariance estimators
+* hierarchical and K-Means asset clustering helpers
+* long-only minimum variance and clustered minimum variance optimization
+* walk-forward backtesting
+* performance summaries and saved plots
+* synthetic-data unit tests for the core backtest, metrics, and optimizer logic
+
+## Quick Start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest
+python main.py
+```
+
+The pipeline writes:
+
+* `results/performance_summary.csv`
+* `results/strategy_returns.csv`
+* `results/latest_weights.csv`
+* `results/regimes.csv`
+* `results/regime_summary.csv`
+* `plots/correlation_heatmap.png`
+* `plots/equity_curve.png`
+* `plots/drawdown_curve.png`
+
+To reuse cached downloaded data:
+
+```bash
+python main.py --use-cache
+```
+
 ## Project Overview
 
 This project aims to develop a quantitative portfolio construction framework that addresses one of the most important challenges in portfolio optimization: estimation error.
